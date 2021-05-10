@@ -1,3 +1,8 @@
+set(LLVM_OPTIONAL_SOURCES
+  IR/EmitCDialect.cpp
+  Passes.cpp
+)
+
 add_mlir_dialect_library(MLIREmitC
   IR/EmitCDialect.cpp
 
@@ -14,5 +19,22 @@ add_mlir_dialect_library(MLIREmitC
   MLIRIR
   MLIRSideEffectInterfaces
   )
+
+  add_mlir_library(MLIREmitCPasses
+    Passes.cpp
+
+    DEPENDS
+    MLIRMHLOToEmitC
+    MLIRMHLORegionOpsToEmitC
+
+    LINK_COMPONENTS
+    Core
+
+    LINK_LIBS PUBLIC
+    MLIRIR
+    MLIRPass
+    MLIRTransformUtils
+  )
+
 
 add_subdirectory(Conversion)

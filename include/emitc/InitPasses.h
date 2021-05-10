@@ -41,6 +41,12 @@ inline void registerAllEmitCPasses() {
   registerConvertTosaToEmitCPass();
 }
 
+inline void registerAllEmitCPipelines() {
+#ifdef EMITC_BUILD_HLO
+  registerEmitCMHLOPipeline();
+#endif // EMITC_BUILD_HLO
+}
+
 } // namespace emitc
 } // namespace mlir
 

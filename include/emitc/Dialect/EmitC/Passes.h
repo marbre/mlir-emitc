@@ -25,6 +25,8 @@ std::unique_ptr<FunctionPass> createConvertStdToEmitCPass();
 std::unique_ptr<FunctionPass> createConvertTensorToEmitCPass();
 std::unique_ptr<FunctionPass> createConvertTosaToEmitCPass();
 
+void registerEmitCMHLOPipeline();
+
 #define GEN_PASS_REGISTRATION
 #include "emitc/Dialect/EmitC/Passes.h.inc"
 

@@ -52,6 +52,7 @@ int main(int argc, char **argv) {
 #endif // IREE_BUILD_EMITC
   registerEmitCDialect(registry);
   emitc::registerAllEmitCPasses();
+  emitc::registerAllEmitCPipelines();
 #ifdef EMITC_BUILD_HLO
   mhlo::registerAllMhloPasses();
   lmhlo::registerAllLmhloPasses();

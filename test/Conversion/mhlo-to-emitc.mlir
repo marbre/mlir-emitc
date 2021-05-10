@@ -1,4 +1,5 @@
 // RUN: emitc-opt -convert-mhlo-region-ops-to-emitc -convert-mhlo-to-emitc %s | FileCheck %s
+// RUN: emitc-opt -emitc-to-mhlo-pipeline %s | FileCheck %s
 
 // Nullary ops
 

@@ -4,6 +4,8 @@
 
 EmitC is a MLIR dialect to emit C++ code. The initial checked in code is forked from https://reviews.llvm.org/D76571.
 
+**EmitC is currently moved into MLIR core! This repository does no longer contain the EmitC dialect itself.**
+
 **DISCLAIMER:** This is a research project and not intended for everyday use. The code is made available without any support. However, we welcome any kind of feedback via the issue tracker.
 
 EmitC enables to convert operations from other MLIR dialects to [EmitC ops](docs/EmitC.md) and to translate those to C++.
@@ -57,6 +59,6 @@ The `emitc-opt` tool enables conversions via the following options:
 The currently supported MHLO ops are listed in the [docs/mhlo-op-coverage.md](docs/mhlo-op-coverage.md) document.
 Supported TOSA ops are listed in the [docs/tosa-op-coverage.md](docs/tosa-op-coverage.md) document.
 
-After converting to EmitC dialect, C++ code can be emitted using `emitc-translate --mlir-to-cpp`.
-For a restricted set of operations C code can be emitted using `emitc-translate --mlir-to-c`.
-Furthermore, `emitc-translate` has specific support for the option `--forward-declare-variables`.
+After converting to EmitC dialect, C++ code can be emitted using `mlir-translate --mlir-to-cpp`.
+For a restricted set of operations C code can be emitted using `mlir-translate --mlir-to-c`.
+Furthermore, `mlir-translate` supports emitting code with forward declarations by passing `--mlir-to-c-forward-declared` and `--mlir-to-c-forward-declared`.

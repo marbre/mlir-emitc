@@ -27,16 +27,16 @@ fi
 MODEL=$1
 EMITC_INCLUDE_DIR=$2
 EMITC_OPT=$3
-EMITC_TRANSLATE=$(dirname $EMITC_OPT)/emitc-translate
-CPP_COMPILER=$4
-BATCH_SIZE=$5
-SEED=$6
-OUTPUT_DIR=$7
+MLIR_TRANSLATE=$5
+CPP_COMPILER=$6
+BATCH_SIZE=$7
+SEED=$8
+OUTPUT_DIR=$9
 
 echo "MODEL=$MODEL"
 echo "EMITC_INCLUDE_DIR=$EMITC_INCLUDE_DIR"
 echo "EMITC_OPT=$EMITC_OPT"
-echo "EMITC_TRANSLATE=$EMITC_TRANSLATE"
+echo "MLIR_TRANSLATE=$MLIR_TRANSLATE"
 echo "CPP_COMPILER=$CPP_COMPILER"
 echo "BATCH_SIZE=$BATCH_SIZE"
 echo "SEED=$SEED"
@@ -80,7 +80,7 @@ echo "Converting mhlo dialect to emitc dialect"
   "$OUTPUT_DIR"/model_fix_name.mlir > "$OUTPUT_DIR"/model_emitc.mlir
 
 echo "Translating emitc dialect to cpp header"
-"$EMITC_TRANSLATE" --mlir-to-cpp "$OUTPUT_DIR"/model_emitc.mlir > "$OUTPUT_DIR"/model_generated.h
+"$MLIR_TRANSLATE" --mlir-to-cpp "$OUTPUT_DIR"/model_emitc.mlir > "$OUTPUT_DIR"/model_generated.h
 
 echo "Generating test case"
 python generate_testscases.py --file-format cpp --count 1 --batch-size "$BATCH_SIZE" --seed "$SEED" "$MODEL" "$OUTPUT_DIR"

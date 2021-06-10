@@ -1,5 +1,5 @@
 // RUN: emitc-opt -convert-std-to-emitc %s | FileCheck %s
-// RUN: emitc-opt -convert-std-to-emitc %s | emitc-translate --mlir-to-cpp | FileCheck %s -check-prefix=CPP
+// RUN: emitc-opt -convert-std-to-emitc %s | mlir-translate  --mlir-to-cpp | FileCheck %s -check-prefix=CPP
 // RUN: emitc-opt -insert-emitc-std-include -convert-std-to-emitc %s | FileCheck %s --check-prefixes=CHECK,CHECK-INCLUDE
 // RUN: emitc-opt -std-to-emitc-pipeline %s | FileCheck %s --check-prefixes=CHECK,CHECK-INCLUDE
 

@@ -8,7 +8,6 @@ configure_lit_site_cfg(
 set(EMITC_TEST_DEPENDS
         FileCheck count not
         emitc-opt
-        emitc-translate
         )
 
 add_lit_testsuite(check-emitc "Running the EmitC regression tests"

@@ -63,7 +63,9 @@ jobs:
           -DLLVM_ENABLE_ASSERTIONS=On \
           -DCMAKE_C_COMPILER=clang \
           -DCMAKE_CXX_COMPILER=clang++
+        cmake --build . --target mlir-translate -- -j$(nproc)
         cmake --build . --target install -- -j$(nproc)
+        cp bin/mlir-translate ../install/bin/
 
   prepare-e2e-test:
     name: Prepare e2e test
@@ -209,7 +211,7 @@ jobs:
           --insert-emitc-std-include \
           --convert-std-to-emitc \
           "${E2E}"/model_fix_name.mlir > "${E2E}"/model_emitc.mlir
-        ./${EMITC}/build_release/bin/emitc-translate --mlir-to-cpp "${E2E}"/model_emitc.mlir > "${E2E}"/model_generated.h
+        mlir-translate --mlir-to-cpp "${E2E}"/model_emitc.mlir > "${E2E}"/model_generated.h
         cd ${E2E}
         clang++ test.cpp -O3 -I `pwd`/../emitc/include/emitc -I `pwd` -o test
         ./test
@@ -221,7 +223,7 @@ jobs:
           --insert-emitc-tosa-include \
           --convert-tosa-to-emitc \
           "${EMITC}"/test/MobileNetV2_tosa.mlir > "${EMITC}"/build_e2e/model_emitc.mlir
-        ./${EMITC}/build_release/bin/emitc-translate --mlir-to-cpp ${EMITC}/build_e2e/model_emitc.mlir > ${EMITC}/build_e2e/model_generated.h
+        mlir-translate --mlir-to-cpp ${EMITC}/build_e2e/model_emitc.mlir > ${EMITC}/build_e2e/model_generated.h
         cp ${EMITC}/test/MobileNetV2_tosa_test.cpp ${EMITC}/build_e2e/test.cpp
         cd ${EMITC}/build_e2e/
         clang++ test.cpp -O3 -I `pwd`/../include/emitc -I `pwd` -o test

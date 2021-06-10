@@ -1,4 +1,4 @@
-// RUN: emitc-opt %s --mhlo-control-flow-to-scf --convert-mhlo-to-emitc --convert-std-to-emitc --convert-tensor-to-emitc | emitc-translate --mlir-to-cpp
+// RUN: emitc-opt %s --mhlo-control-flow-to-scf --convert-mhlo-to-emitc --convert-std-to-emitc --convert-tensor-to-emitc | mlir-translate  --mlir-to-cpp
 // RUN: emitc-opt %s --mhlo-control-flow-to-scf --convert-mhlo-to-emitc --convert-std-to-emitc --convert-tensor-to-emitc --print-op-stats -o /dev/null 2>&1 | FileCheck %s
 
 // CHECK: emitc.call

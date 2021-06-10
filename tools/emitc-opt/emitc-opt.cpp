@@ -10,7 +10,6 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "emitc/InitDialect.h"
 #include "emitc/InitPasses.h"
 #ifdef IREE_BUILD_EMITC
 #include "iree/tools/init_mlir_dialects.h"
@@ -50,7 +49,6 @@ int main(int argc, char **argv) {
   registerAllDialects(registry);
   registerAllPasses();
 #endif // IREE_BUILD_EMITC
-  registerEmitCDialect(registry);
   emitc::registerAllEmitCPasses();
 #ifdef EMITC_BUILD_HLO
   mhlo::registerAllMhloPasses();

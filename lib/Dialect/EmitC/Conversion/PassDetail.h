@@ -9,7 +9,6 @@
 #ifndef DIALECT_EMITC_CONVERSION_PASSDETAIL_H
 #define DIALECT_EMITC_CONVERSION_PASSDETAIL_H
 
-#include "mlir/Dialect/Func/IR/FuncOps.h"
 #include "mlir/Pass/Pass.h"
 
 namespace mlir {

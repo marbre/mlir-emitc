@@ -4,6 +4,9 @@
 //
 // Licensed under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
+//
+// SPDX-FileCopyrightText: Copyright Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.
+// SPDX-FileCopyrightText: Copyright Google LLC
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
 // This file defines functions emitted by TosaToEmitC.
